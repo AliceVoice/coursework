@@ -1,37 +1,38 @@
 public class Main {
 
     public static void main(String[] args) {
-        Employee[] employeesArr = new Employee[10];
-        employeesArr[0] = new Employee("Малышев Ростислав Николаевич", 1, 30_000);
-        employeesArr[1] = new Employee("Лебедева Кристина Анатольевна", 1, 100_000);
-        employeesArr[2] = new Employee("Малышева Елена Ивановна", 1, 111_000);
-        employeesArr[3] = new Employee("Малышев Самир Александрович", 1, 60_000);
-        employeesArr[4] = new Employee("Галицкий Вячеслав Витальевич", 1, 55_000);
-        employeesArr[5] = new Employee("Львов Павел Дмитриевич", 3, 25_000);
-        employeesArr[6] = new Employee("Базылева Софья Сергеевна", 4, 27_000);
-        employeesArr[7] = new Employee("Кононов Дмитрий Константинович", 5, 13_000);
-        employeesArr[8] = new Employee("Кононова Ангелина Сергеевна", 5, 100_000);
-        employeesArr[9] = new Employee("Машель Сергей Михайлович", 2, 228_000);
-        for (int i = 0; i < employeesArr.length; i++) {
-            employeesArr[i].setCounter(i++);
-        }
-        EmployeeService employeeService = new EmployeeService();
-        employeeService.printAllEmployeesInfo(employeesArr);
-        employeeService.printAllEmployeesName(employeesArr);
+        EmployeeBook employeeBook = new EmployeeBook();
 
+        employeeBook.addEmployee("Малышев Ростислав Николаевич", 1, 30_000);
+        employeeBook.addEmployee("Лебедева Кристина Анатольевна", 1, 100_000);
+        employeeBook.addEmployee("Малышева Елена Ивановна", 1, 111_000);
+        employeeBook.addEmployee("Малышев Самир Александрович", 1, 60_000);
+        employeeBook.addEmployee("Галицкий Вячеслав Витальевич", 1, 55_000);
+        employeeBook.addEmployee("Львов Павел Дмитриевич", 3, 25_000);
+        employeeBook.addEmployee("Базылева Софья Сергеевна", 4, 27_000);
+        employeeBook.addEmployee("Кононов Дмитрий Константинович", 5, 13_000);
+        employeeBook.addEmployee("Кононова Ангелина Сергеевна", 5, 100_000);
+        employeeBook.addEmployee("Машель Сергей Михайлович", 2, 228_000);
 
-        System.out.println("Затраты на зарплаты: " + employeeService.calcSalaryCosts(employeesArr));
-        System.out.println("Сотрудник с минимальной зарплатой: " + employeeService.minimalEmployeeSalary(employeesArr));
-        System.out.println("Сотрудник с максимальной зарплатой: " + employeeService.maximalEmployeeSalary(employeesArr));
-        System.out.println("Средняя зарплата составляет: " + employeeService.calcAverageSalary(employeesArr));
-        employeeService.printAllEmployeesName(employeesArr);
+        employeeBook.printAllEmployeesInfo();
+        employeeBook.printAllEmployeesName();
 
-        employeeService.increaseSalary(employeesArr, 10);
-        System.out.println("Сотрудник с минимальной зарплатой в отделе: " + employeeService.getDepartmentMinSalaryEmployee(1, employeesArr));
-        System.out.println("Сотрудник с максимальной зарплатой в отделе: " + employeeService.getDepartmentMaxSalaryEmployee(2, employeesArr));
-        System.out.println("Сумма затрат на зарплату в отделе: " + employeeService.getCostDepartmentSalary(4, employeesArr));
-        employeeService.printIncreaseDepartmentSalary(1, employeesArr, 10);
-        employeeService.printDepartmentEmployeesNames(1, employeesArr);
-        employeeService.printIsSalaryBigger(30000, employeesArr);
+        System.out.println("Затраты на зарплаты: " + employeeBook.calcSalaryCosts());
+        System.out.println("Сотрудник с минимальной зарплатой: " + employeeBook.minimalEmployeeSalary());
+        System.out.println("Сотрудник с максимальной зарплатой: " + employeeBook.maximalEmployeeSalary());
+        System.out.println("Средняя зарплата составляет: " + employeeBook.calcAverageSalary());
+        employeeBook.printAllEmployeesName();
+
+        employeeBook.increaseSalary(10);
+        System.out.println("Сотрудник с минимальной зарплатой в отделе: " + employeeBook.getDepartmentMinSalaryEmployee(1));
+        System.out.println("Сотрудник с максимальной зарплатой в отделе: " + employeeBook.getDepartmentMaxSalaryEmployee(2));
+        System.out.println("Сумма затрат на зарплату в отделе: " + employeeBook.getCostDepartmentSalary(4));
+        employeeBook.printIncreaseDepartmentSalary(1, 10);
+        employeeBook.printDepartmentEmployeesNames(1);
+        employeeBook.printIsSalaryBigger(30000);
+        employeeBook.changeEmployeeSalary("Лебедева Кристина Анатольевна", 800_000);
+        employeeBook.printEachDepartmentEpmloyees();
+        employeeBook.removeEmployeeId(1);
+
     }
 }
