@@ -1,5 +1,5 @@
 public class Employee {
-    private int counter = 0;
+    private static int counter = 0;
     private String fullname;
     private int department;
     private int salary;
@@ -9,7 +9,7 @@ public class Employee {
         this.fullname = fullname;
         this.department = department;
         this.salary = salary;
-        this.id = counter++;
+        this.id = ++counter;
         if (department < 1 || department > 5) {
             throw new IllegalArgumentException("Отдел должен быть от 1 до 5");
         }
@@ -39,13 +39,9 @@ public class Employee {
         this.salary = salary;
     }
 
-    public void setCounter(int counter) {
-        this.counter = counter;
-    }
-
     @Override
     public String toString() {
-        return "id: " + counter + " ФИО сотрудника: " + getFullname() + " Отдел: " + department + " Зарплата: " + getSalary();
+        return "id: " + getId() + " ФИО сотрудника: " + getFullname() + " Отдел: " + department + " Зарплата: " + getSalary();
     }
 
 }
